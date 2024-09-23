@@ -8,7 +8,8 @@ class Books(models.Model):
     name_book = models.CharField(
         max_length=150,
         verbose_name='Название книги',
-        help_text='Введите название книги'
+        help_text='Введите название книги',
+        unique=True
     )
     author = models.ForeignKey(
         User,
