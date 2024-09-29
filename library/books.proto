@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package books;
+
+//Сообщение для запроса информации о книге
+message GetBookRequest {
+  int32 id = 1; // ID книги
+}
+
+// Сообщение для запроса списка книг
+message ListAllBooksRequest {}
+
+// Сообщение для ответа с информацией о книге
+message Book {
+  int32 id = 1; // ID книги
+  string name_book = 2; // Название книги
+  string author = 3; // Автор книги
+  string date_publication = 4; // Дата публикации
+}
+
+// Сообщение для ответа со списком всех книг
+message GetAllBooksResponse {
+  repeated Book books = 1; // Список книг
+}
+
+// Определение сервиса
+service BooksService {
+    // Получение информации о книге по id
+    rpc GetBookById(GetBookRequest) returns (Book) {}
+
+    // Получение списка всех книг
+    rpc ListAllBooks(ListAllBooksRequest) returns (GetAllBooksResponse) {}
+}

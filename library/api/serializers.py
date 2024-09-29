@@ -1,7 +1,8 @@
 from rest_framework import serializers
 
 from users.models import User
-from models.models import Books
+# from models.models import Books
+from reviews.models import Books
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -22,6 +23,7 @@ class BookSerializer(serializers.ModelSerializer):
 class BooksSerializer(serializers.ModelSerializer):
     """Сериалайзер для книг."""
     author = UserSerializer(read_only=True)
+    date_publication = serializers.DateTimeField(format='%H:%M %d %B %Y')
 
     class Meta:
         model = Books

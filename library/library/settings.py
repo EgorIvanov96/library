@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'djoser',
     'users.apps.UsersConfig',
     'api.apps.ApiConfig',
-    'models.apps.ModelsConfig',
+    'reviews.apps.ReviewsConfig',
 ]
 
 MIDDLEWARE = [
@@ -118,4 +118,11 @@ SIMPLE_JWT = {
     # Устанавливаем срок жизни токена
     'ACCESS_TOKEN_LIFETIME': timedelta(days=10),
     'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+GRPC_SERVER = {
+    'DEFAULT': {
+        'HOST': 'localhost',  # или '0.0.0.0' для доступа извне
+        'PORT': 50051,        # стандартный порт для gRPC
+    },
 }
